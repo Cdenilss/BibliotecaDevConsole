@@ -4,7 +4,7 @@ namespace BibliotecaDevv.Services;
 
 public class LivrosService
 {
-    public List<Livros> livrosCadastrados = new List<Livros>();
+    public List<Livro> livrosCadastrados = new List<Livro>();
 
     public void Cadastrarlivro()
     {
@@ -36,7 +36,7 @@ public class LivrosService
                 anoDePublicacao = int.Parse(Console.ReadLine());
             }
             
-        Livros livro = new Livros(id, titulo, autor, anoDePublicacao);
+        Livro livro = new Livro(id, titulo, autor, anoDePublicacao);
         
         livrosCadastrados.Add(livro);
         Console.WriteLine("Livro cadastrado com sucesso");

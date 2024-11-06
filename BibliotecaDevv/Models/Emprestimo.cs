@@ -1,9 +1,9 @@
 namespace BibliotecaDevv;
 
-public class Emprestimos
+public class Emprestimo
 {
 
-    public Emprestimos( int userId, string nome, DateTime inicioEmprestimo) : base()
+    public Emprestimo( int userId, string nome, DateTime inicioEmprestimo) : base()
     {
         Id = Random.Shared.Next(1, 10000);
         UserId = userId;

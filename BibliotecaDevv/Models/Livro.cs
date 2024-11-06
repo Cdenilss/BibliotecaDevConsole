@@ -1,8 +1,8 @@
 namespace BibliotecaDevv;
 
-public class Livros
+public class Livro
 {
-    public Livros(int id, string titulo,string autor,int anodDePublicacao)
+    public Livro(int id, string titulo,string autor,int anodDePublicacao)
     {
         Id = id;
         Titulo = titulo;

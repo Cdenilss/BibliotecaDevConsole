@@ -4,7 +4,7 @@ namespace BibliotecaDevv.Services;
 
 public class UserService
 {
-    public List<User> userCadastrados = new List<User>();
+    public List<Usuario> userCadastrados = new List<Usuario>();
     //private User denil1 = new User("carlos","jj234");
     
     
@@ -21,9 +21,9 @@ public class UserService
         // por um while
         if (Regex.IsMatch(email,padraoEmail))
         {
-            User userNovo = new User( nome, email);
-            userCadastrados.Add(userNovo);
-            userNovo.ExibirId();
+            Usuario usuarioNovo = new Usuario( nome, email);
+            userCadastrados.Add(usuarioNovo);
+            usuarioNovo.ExibirId();
             Console.WriteLine("User cadastrado com sucesso");
 
             Console.WriteLine("digite qualquer tecla para retornar");
@@ -41,7 +41,7 @@ public class UserService
 
    public bool UsarioExiste(int userId)
     {
-        return userCadastrados.Any(u => u.IdUser == userId);
+        return userCadastrados.Any(u => u.Id == userId);
     }
 
     public void ExibirUserCadastrados()

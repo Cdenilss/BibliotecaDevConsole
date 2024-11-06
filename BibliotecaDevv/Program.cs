@@ -1,10 +1,9 @@
 ﻿using System.Net.Sockets;
 using BibliotecaDevv;
 using BibliotecaDevv.Services;
-LivrosService liv = new LivrosService();
-UserService user = new UserService();
+LivrosService livrosService = new LivrosService();
 UserService userService = new UserService();
-EmprestimosService emprestimosService = new EmprestimosService(user,liv);
+EmprestimosService emprestimosService = new EmprestimosService(userService,livrosService);
 Console.WriteLine("Bem vindo, a biblioteca do futuro:");
 
 
@@ -27,29 +26,29 @@ while (true)
     switch (opcao)
     {
         case "1":
-            liv.Cadastrarlivro();
+            livrosService.Cadastrarlivro();
             break;
         case "2":
-            liv.ExibirLivrosCadastrados();
+            livrosService.ExibirLivrosCadastrados();
 
             break;
         case "3":
-            liv.BuscarLivroPorId();
+            livrosService.BuscarLivroPorId();
             
 
             break;
         case "4":
-            user.CadastroUsuario();
+            userService.CadastroUsuario();
 
             break;
         case "5":
-            user.ExibirUserCadastrados();
+            userService.ExibirUserCadastrados();
             break;
         case "6":
             emprestimosService.NovoEmprestimo();
             break;
         case "7":
-            liv.RemoverLivro(); 
+            livrosService.RemoverLivro(); 
             break;
         default:
             Console.WriteLine("Ate logo");

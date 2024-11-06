@@ -4,7 +4,7 @@ namespace BibliotecaDevv.Services;
 
 public class EmprestimosService
 {
-    private List<Emprestimos> emprestimosAtivos = new List<Emprestimos>();
+    private List<Emprestimo> emprestimosAtivos = new List<Emprestimo>();
     private UserService _userService;
     private LivrosService _livrosService;
 
@@ -30,7 +30,7 @@ public class EmprestimosService
                 int meses = int.Parse(Console.ReadLine());
                 var inicioEmprestimo = DateTime.Now;
                 DateTime limiteFinal = inicioEmprestimo.AddMonths(meses);
-                Emprestimos emprestimoNovo = new Emprestimos( userId, nome, inicioEmprestimo);
+                Emprestimo emprestimoNovo = new Emprestimo( userId, nome, inicioEmprestimo);
                 emprestimosAtivos.Add(emprestimoNovo);
                 Console.WriteLine($"Emprestimo realizado com sucesso, data para devolução de emprestimo é: {limiteFinal}");
                 Console.WriteLine("digite qualquer tecla para retornar ao menu");
