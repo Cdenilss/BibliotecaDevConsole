@@ -9,27 +9,20 @@ public class LivrosService
     public void Cadastrarlivro()
     {
         Console.WriteLine("qual o id do livro?");
-
         int id = int.Parse(Console.ReadLine());
-        
         Console.WriteLine("qual o nome do livro?");
         string titulo = Console.ReadLine();
-        if (string.IsNullOrEmpty(titulo))
-        {
-            while (string.IsNullOrEmpty(titulo))
+            while (string.IsNullOrWhiteSpace(titulo))
             {
                 Console.WriteLine("nome invalido, por favor digite novamente");
                 titulo = Console.ReadLine();
             }
-        }
-
         Console.WriteLine("Autor do Livro");
         string autor = Console.ReadLine();
-
         Console.WriteLine("Ano de publicaçao ?");
         int anoDePublicacao = int.Parse(Console.ReadLine());
         
-            while (anoDePublicacao >= 2025)
+            while (anoDePublicacao > DateTime.Today.Year)
             {
                 
                 Console.WriteLine("Ano invalido, favor digite novamente");
@@ -42,16 +35,11 @@ public class LivrosService
         Console.WriteLine("Livro cadastrado com sucesso");
 
         Console.WriteLine("precisione qualquer tecla para retornar");
-        
         Console.ReadKey();
-
-
-
     }
 
     public void ExibirLivrosCadastrados()
     {
-       
             if (livrosCadastrados.Count== 0)
             {
                 Console.WriteLine("Lista vazia");
@@ -63,8 +51,6 @@ public class LivrosService
                 {
                     livro.ExibirDetalheLivro();
                 }
-                
-
             }
         
     }
@@ -99,8 +85,8 @@ public class LivrosService
         {
             livroASerRemovido.ExibirDetalheLivro();
             Console.WriteLine($"Deseja continuar com a remoção do livro {livroASerRemovido.Titulo}?\n digite 1 para continuar ou qualquer outro numero para cancelar");
-            var respota = int.Parse(Console.ReadLine());
-            if (respota==1)
+            var resposta = int.Parse(Console.ReadLine());
+            if (resposta==1)
             {
                 livrosCadastrados.Remove(livroASerRemovido);
                 Console.WriteLine("livro removido com sucesso.");
@@ -108,19 +94,11 @@ public class LivrosService
                 Console.ReadKey();
                 
             }
-            else
-            {
-                Console.WriteLine("Operação Cancelada");
-                Console.WriteLine("digite qualquer tecla para retornar ao menu");
-                Console.ReadKey();
-
-                
-            }
-        }
-        else
-        {
-            Console.WriteLine("Livro nao encontrado");
-        }
-        
+            Console.WriteLine("Operação Cancelada");
+            Console.WriteLine("digite qualquer tecla para retornar ao menu");
+            Console.ReadKey();
+        } 
+        Console.WriteLine("Livro nao encontrado");
+            
     }
 }

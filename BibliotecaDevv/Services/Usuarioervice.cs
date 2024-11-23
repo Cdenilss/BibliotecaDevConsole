@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace BibliotecaDevv.Services;
 
-public class UserService
+public class Usuarioervice
 {
     public List<Usuario> userCadastrados = new List<Usuario>();
     //private User denil1 = new User("carlos","jj234");
@@ -10,7 +10,7 @@ public class UserService
     
     
     
-    public void CadastroUsuario()
+    public void CadastrarUsuario()
     {
         Console.WriteLine("Seja bem vindo, vamos realizar seu cadastro");
         Console.WriteLine("Qual o seu nome?");
@@ -34,9 +34,6 @@ public class UserService
             Console.WriteLine("email invalido");
             
         }
-        // usar regex
-       
-
     }
 
    public bool UsarioExiste(int userId)

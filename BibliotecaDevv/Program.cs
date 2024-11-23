@@ -2,8 +2,8 @@
 using BibliotecaDevv;
 using BibliotecaDevv.Services;
 LivrosService livrosService = new LivrosService();
-UserService userService = new UserService();
-EmprestimosService emprestimosService = new EmprestimosService(userService,livrosService);
+Usuarioervice usuarioervice = new Usuarioervice();
+EmprestimosService emprestimosService = new EmprestimosService(usuarioervice,livrosService);
 Console.WriteLine("Bem vindo, a biblioteca do futuro:");
 
 
@@ -38,11 +38,11 @@ while (true)
 
             break;
         case "4":
-            userService.CadastroUsuario();
+            usuarioervice.CadastrarUsuario();
 
             break;
         case "5":
-            userService.ExibirUserCadastrados();
+            usuarioervice.ExibirUserCadastrados();
             break;
         case "6":
             emprestimosService.NovoEmprestimo();

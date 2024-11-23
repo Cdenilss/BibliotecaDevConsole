@@ -5,22 +5,20 @@ namespace BibliotecaDevv.Services;
 public class EmprestimosService
 {
     private List<Emprestimo> emprestimosAtivos = new List<Emprestimo>();
-    private UserService _userService;
+    private Usuarioervice _usuarioervice;
     private LivrosService _livrosService;
 
-    public EmprestimosService(UserService userService, LivrosService livrosService)
+    public EmprestimosService(Usuarioervice usuarioervice, LivrosService livrosService)
     {
-        _userService = userService;
+        _usuarioervice = usuarioervice;
         _livrosService = livrosService;
     }
-
-
     public void NovoEmprestimo()
     {
         Console.WriteLine("Seja bem vindo, vamos realizar seu emprestimo");
         Console.WriteLine("Qual o seu id?");
         var userId = int.Parse(Console.ReadLine());
-        if (_userService.UsarioExiste(userId))
+        if (_usuarioervice.UsarioExiste(userId))
         {
             Console.WriteLine("Qual livro Deseja Alugar? ");
             var nome = Console.ReadLine();
@@ -41,24 +39,11 @@ public class EmprestimosService
             {
                 Console.WriteLine("Livro nao encontrado, tente novamente");
             }
-            
-
         }
         else
         {
             Console.WriteLine("User Id nao encontrado");
         }
-        
-        //Realizar uma maneira de aparecer um warning para o user para aparecer quando esta atrasado.
-
-        void AtrasoDeDevolucao()
-        {
-           
-            
-                
-            
-        }
-        
     }
     
 }
