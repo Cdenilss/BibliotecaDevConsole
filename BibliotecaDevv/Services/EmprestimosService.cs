@@ -28,7 +28,7 @@ public class EmprestimosService
                 int meses = int.Parse(Console.ReadLine());
                 var inicioEmprestimo = DateTime.Now;
                 DateTime limiteFinal = inicioEmprestimo.AddMonths(meses);
-                Emprestimo emprestimoNovo = new Emprestimo( userId, nome, inicioEmprestimo);
+                Emprestimo emprestimoNovo = new Emprestimo( userId, nome, inicioEmprestimo, limiteFinal);
                 emprestimosAtivos.Add(emprestimoNovo);
                 Console.WriteLine($"Emprestimo realizado com sucesso, data para devolução de emprestimo é: {limiteFinal}");
                 Console.WriteLine("digite qualquer tecla para retornar ao menu");

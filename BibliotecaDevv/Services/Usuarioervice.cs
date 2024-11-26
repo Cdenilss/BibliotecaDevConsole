@@ -5,11 +5,6 @@ namespace BibliotecaDevv.Services;
 public class Usuarioervice
 {
     public List<Usuario> userCadastrados = new List<Usuario>();
-    //private User denil1 = new User("carlos","jj234");
-    
-    
-    
-    
     public void CadastrarUsuario()
     {
         Console.WriteLine("Seja bem vindo, vamos realizar seu cadastro");
