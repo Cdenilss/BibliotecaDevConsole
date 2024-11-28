@@ -7,29 +7,35 @@ public class Usuarioervice
     public List<Usuario> userCadastrados = new List<Usuario>();
     public void CadastrarUsuario()
     {
-        Console.WriteLine("Seja bem vindo, vamos realizar seu cadastro");
+        Console.WriteLine("Seja bem-vindo, vamos realizar seu cadastro");
         Console.WriteLine("Qual o seu nome?");
         string nome = Console.ReadLine();
-        Console.WriteLine("Por ultimo, digite seu melhor email");
-        string email = Console.ReadLine();
+    
+        string email;
         string padraoEmail = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-        // por um while
-        if (Regex.IsMatch(email,padraoEmail))
+        Console.WriteLine("Por último, digite seu melhor email:");
+        while (true)
         {
-            Usuario usuarioNovo = new Usuario( nome, email);
-            userCadastrados.Add(usuarioNovo);
-            usuarioNovo.ExibirId();
-            Console.WriteLine("User cadastrado com sucesso");
-
-            Console.WriteLine("digite qualquer tecla para retornar");
-            Console.ReadKey();
+            email = Console.ReadLine();
+            if (Regex.IsMatch(email, padraoEmail))
+            {
+                break; 
+            }
+            else
+            {
+                Console.WriteLine("Email inválido. Por favor, tente novamente.");
+            }
         }
-        else
-        {
-            Console.WriteLine("email invalido");
-            
-        }
+        
+        Usuario usuarioNovo = new Usuario(nome, email);
+        userCadastrados.Add(usuarioNovo);
+        usuarioNovo.ExibirId();
+        Console.WriteLine("Usuário cadastrado com sucesso!");
+    
+        Console.WriteLine("Digite qualquer tecla para retornar");
+        Console.ReadKey();
     }
+
 
    public bool UsarioExiste(int userId)
     {
