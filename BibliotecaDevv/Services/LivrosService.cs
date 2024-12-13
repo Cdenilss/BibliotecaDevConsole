@@ -34,8 +34,9 @@ public class LivrosService
         livrosCadastrados.Add(livro);
         Console.WriteLine("Livro cadastrado com sucesso");
 
-        Console.WriteLine("precisione qualquer tecla para retornar");
+        Console.WriteLine("Pressione qualquer tecla para retornar");
         Console.ReadKey();
+        Console.Clear();
     }
 
     public void ExibirLivrosCadastrados()
@@ -43,14 +44,21 @@ public class LivrosService
             if (livrosCadastrados.Count== 0)
             {
                 Console.WriteLine("Lista vazia");
+                Console.WriteLine("Para retornar, pressione qualquer tecla");
+                Console.ReadKey();
+                Console.Clear();
             }
             else
             {
-                Console.WriteLine("esse sao os livros cadastrados:\n");
+                Console.WriteLine("Esse sao os livros cadastrados:");
                 foreach (var livro in livrosCadastrados)
                 {
                     livro.ExibirDetalheLivro();
+                   
                 }
+                Console.WriteLine("Para retornar, pressione qualquer tecla");
+                Console.ReadKey();
+                Console.Clear();
             }
         
     }
@@ -64,6 +72,7 @@ public class LivrosService
         if (livroEncontrada!= null)
         {
             livroEncontrada.ExibirDetalheLivro();
+            
         }
         else
         {
@@ -72,33 +81,54 @@ public class LivrosService
 
         Console.WriteLine("digite qualquer tecla para retornar ao menu");
         Console.ReadKey();
-        
+        Console.Clear();
     }
 
 
     public void RemoverLivro()
     {
-        Console.WriteLine("Qual livro deseja remover ?");
-        var livroBuscado = Console.ReadLine();
-        var livroASerRemovido = livrosCadastrados.FirstOrDefault(l => l.Titulo == livroBuscado);
-        if (livroASerRemovido != null)
+        if (!livrosCadastrados.Any())
         {
-            livroASerRemovido.ExibirDetalheLivro();
-            Console.WriteLine($"Deseja continuar com a remoção do livro {livroASerRemovido.Titulo}?\n digite 1 para continuar ou qualquer outro numero para cancelar");
-            var resposta = int.Parse(Console.ReadLine());
-            if (resposta==1)
-            {
-                livrosCadastrados.Remove(livroASerRemovido);
-                Console.WriteLine("livro removido com sucesso.");
-                Console.WriteLine("digite qualquer tecla para retornar ao menu");
-                Console.ReadKey();
-                
-            }
-            Console.WriteLine("Operação Cancelada");
-            Console.WriteLine("digite qualquer tecla para retornar ao menu");
+            Console.WriteLine("Não há livros cadastrados no sistema.");
+            Console.WriteLine("Pressione qualquer tecla para retornar ao menu.");
             Console.ReadKey();
-        } 
-        Console.WriteLine("Livro nao encontrado");
-            
+            Console.Clear();
+            return;
+        }
+
+        Console.WriteLine("Qual livro deseja remover?");
+        var livroBuscado = Console.ReadLine();
+
+        var livroASerRemovido = livrosCadastrados.FirstOrDefault(l => 
+            l.Titulo.Equals(livroBuscado, StringComparison.OrdinalIgnoreCase));
+
+        if (livroASerRemovido == null)
+        {
+            Console.WriteLine("Livro não encontrado.");
+            Console.WriteLine("Pressione qualquer tecla para retornar ao menu.");
+            Console.ReadKey();
+            Console.Clear();
+            return;
+        }
+        
+        livroASerRemovido.ExibirDetalheLivro();
+
+        Console.WriteLine($"Deseja continuar com a remoção do livro '{livroASerRemovido.Titulo}'?");
+        Console.WriteLine("Digite 1 para confirmar ou qualquer outro número para cancelar.");
+
+        if (int.TryParse(Console.ReadLine(), out int resposta) && resposta == 1)
+        {
+            livrosCadastrados.Remove(livroASerRemovido);
+            Console.WriteLine("Livro removido com sucesso.");
+        }
+        else
+        {
+            Console.WriteLine("Operação cancelada.");
+        }
+
+        Console.WriteLine("Pressione qualquer tecla para retornar ao menu.");
+        Console.ReadKey();
+        Console.Clear();
     }
-}
+
+    }

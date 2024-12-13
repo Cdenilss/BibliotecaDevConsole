@@ -2,7 +2,7 @@ using System.Text.RegularExpressions;
 
 namespace BibliotecaDevv.Services;
 
-public class Usuarioervice
+public class Usuarioservice
 {
     public List<Usuario> userCadastrados = new List<Usuario>();
     public void CadastrarUsuario()
@@ -10,7 +10,6 @@ public class Usuarioervice
         Console.WriteLine("Seja bem-vindo, vamos realizar seu cadastro");
         Console.WriteLine("Qual o seu nome?");
         string nome = Console.ReadLine();
-    
         string email;
         string padraoEmail = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
         Console.WriteLine("Por último, digite seu melhor email:");
@@ -34,6 +33,7 @@ public class Usuarioervice
     
         Console.WriteLine("Digite qualquer tecla para retornar");
         Console.ReadKey();
+        Console.Clear();
     }
 
 
@@ -47,6 +47,9 @@ public class Usuarioervice
         if (userCadastrados.Count== 0)
         {
             Console.WriteLine("Sem usuarios cadastrados");
+            Console.WriteLine("Clique em qualquer tecla para retornar ao menu");
+            Console.ReadKey();
+            Console.Clear();
         }
         else
         {
@@ -54,6 +57,10 @@ public class Usuarioervice
             foreach (var user in userCadastrados)
             {
                 user.ExibirDadosUsuer();
+                Console.WriteLine("Pressione qualquer tecla para retornar ao menu");
+                Console.ReadKey();
+                Console.Clear();
+
             }
         }
     }
